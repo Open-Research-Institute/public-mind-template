@@ -1,0 +1,369 @@
+// ============================================================
+//   Manuscript — a quiet, monochrome editorial theme for Quartz
+//   Converted from the Obsidian Manuscript theme.
+// ============================================================
+
+// ============================================================
+//   1. FONTS
+// ============================================================
+
+// handled in quartz.config.ts
+
+// ============================================================
+//   2. COLOR TOKENS — mapped to Quartz CSS variables
+// ============================================================
+
+:root[saved-theme="light"] {
+  // Backgrounds
+  --light:          #EAE8E3;   // page background       (--background-primary)
+  --lightgray:      #D2CFC7;   // borders               (--background-modifier-border)
+  --gray:           #A6A39B;   // faint text / graph     (--text-faint)
+  --darkgray:       #6E6B64;   // muted text             (--text-muted)
+  --dark:           #23211C;   // body / heading text    (--text-normal)
+  --secondary:      #23211C;   // links, current node    (--text-accent)
+  --tertiary:       #6E6B64;   // hover / visited nodes  (--text-muted)
+  --highlight:      rgba(35, 33, 28, 0.06);  // subtle tint  (--mn-ink-wash)
+
+  // Quartz surface variables
+  --mn-raised:      #F2F0EC;
+}
+
+:root[saved-theme="dark"] {
+  // Backgrounds
+  --light:          #1B1A17;
+  --lightgray:      #32302B;
+  --gray:           #5A574E;
+  --darkgray:       #8C887E;
+  --dark:           #D8D4CB;
+  --secondary:      #D8D4CB;
+  --tertiary:       #8C887E;
+  --highlight:      rgba(255, 253, 247, 0.07);
+
+  --mn-raised:      #222120;
+}
+
+// ============================================================
+//   3. TYPOGRAPHY
+// ============================================================
+
+:root {
+  --bodyFont:    'IBM Plex Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --headerFont:  'IBM Plex Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --codeFont:    'IBM Plex Mono', 'Source Code Pro', Menlo, Consolas, monospace;
+
+  --lineHeight:  1.7;
+  --p-spacing:   1.15rem;
+
+  // Sharp corners everywhere — the theme's defining trait
+  --radius-s: 0px;
+  --radius-m: 2px;
+  --radius-l: 2px;
+}
+
+// ============================================================
+//   4. BODY & HEADINGS
+// ============================================================
+
+body {
+  font-family: var(--bodyFont);
+  line-height: var(--lineHeight);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--headerFont);
+  color: var(--dark);
+}
+
+h1 { font-size: 2.4em;  font-weight: 600; letter-spacing: -0.015em; }
+h2 { font-size: 1.8em;  font-weight: 600; letter-spacing: -0.01em;  }
+h3 { font-size: 1.4em;  font-weight: 600; }
+h4 { font-size: 1.15em; font-weight: 600; }
+h5 { font-size: 1em;    font-weight: 600; }
+h6 { font-size: 0.9em;  font-weight: 600; color: var(--darkgray); }
+
+p { margin-block-end: var(--p-spacing); }
+
+// ============================================================
+//   5. LINKS — ink, underlined, no colour
+// ============================================================
+
+a {
+  color: var(--dark);
+  text-decoration: none; // Remove underline from all links by default
+
+  &:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+  }
+}
+
+// Opt back in — only links inside the article body
+article a {
+  text-decoration: underline;
+
+  &:hover { text-decoration: underline; }
+}
+
+// Internal Quartz links
+a.internal {
+  color: var(--dark);
+  text-decoration: underline;
+  background: transparent;
+
+  &:hover { color: var(--secondary); }
+}
+
+// ============================================================
+//   6. CODE
+// ============================================================
+
+code {
+  font-family: var(--codeFont);
+  background: var(--mn-raised);
+  border: 1px solid var(--lightgray);
+  border-radius: 0;
+  padding: 0.05em 0.35em;
+  color: var(--dark);
+}
+
+pre {
+  background: var(--mn-raised) !important;
+  border: 1px solid var(--lightgray);
+  border-radius: 0 !important;
+
+  code {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+}
+
+// ============================================================
+//   7. BLOCKQUOTE
+// ============================================================
+
+blockquote {
+  border-left: 1px solid var(--lightgray);
+  border-radius: 0;
+  background: transparent;
+  margin-inline: 0;
+  padding-inline-start: 1.2em;
+  color: var(--darkgray);
+}
+
+// ============================================================
+//   8. TABLES
+// ============================================================
+
+table {
+  border-collapse: collapse;
+
+  th, td {
+    border: 1px solid var(--lightgray);
+    padding: 0.4em 0.75em;
+  }
+
+  thead th {
+    background: var(--highlight);
+    font-variant: small-caps;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+  }
+}
+
+// ============================================================
+//   9. HORIZONTAL RULE
+// ============================================================
+
+hr {
+  border: none;
+  border-top: 1px solid var(--lightgray);
+}
+
+// ============================================================
+//   10. TAGS
+// ============================================================
+
+.tag-link,
+a.tag-link {
+  background: transparent;
+  color: var(--darkgray);
+  border: 1px solid var(--lightgray);
+  border-radius: 0;
+  padding: 0.05em 0.5em;
+  font-weight: 400;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--highlight);
+    color: var(--dark);
+  }
+}
+
+// ============================================================
+//   11. CALLOUTS
+// ============================================================
+
+.callout {
+  background: transparent !important;
+  border: 1px solid var(--lightgray) !important;
+  border-radius: 0 !important;
+  padding: 6px 16px;
+  margin-block: 1em;
+
+  // Flatten the left accent bar that Quartz adds by default
+  border-left: 1px solid var(--lightgray) !important;
+
+  .callout-title {
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: var(--dark);
+    padding-block: 6px;
+
+    // Mute the callout icon colour — monochrome
+    .callout-icon svg { color: var(--darkgray); }
+  }
+
+  .callout-content {
+    padding-block: 0 6px;
+
+    > :first-child { margin-top: 0; }
+    > :last-child  { margin-bottom: 0; }
+  }
+}
+
+// ============================================================
+//   12. QUARTZ CHROME — sidebar, header, graph
+// ============================================================
+
+// --- Sidebar ---
+#left-sidebar, #right-sidebar {
+  background: var(--light);
+  font-family: var(--bodyFont);
+}
+
+// --- Page header / title ---
+.page-title {
+  font-family: var(--headerFont);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--dark);
+}
+
+// --- Graph ---
+.graph-outer {
+  border: 1px solid var(--lightgray);
+  border-radius: 0;
+}
+
+// --- Search ---
+#search-bar {
+  border-radius: 2px;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  font-family: var(--bodyFont);
+
+  &:focus {
+    border-color: var(--dark);
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+// --- Table of contents ---
+.toc-content a {
+  color: var(--darkgray);
+  text-decoration: none;
+
+  &:hover { color: var(--dark); text-decoration: underline; }
+  &.in-view { color: var(--dark); font-weight: 600; }
+}
+
+// --- Backlinks / references panel ---
+.backlinks {
+  border-top: 1px solid var(--lightgray);
+}
+
+// ============================================================
+//   13. SYNTAX HIGHLIGHTING — monochrome (weight + italic, no hue)
+// ============================================================
+
+.highlight {
+  span.pl-k,  // keywords
+  span.pl-s1  // selectors
+  { color: var(--dark); font-weight: 600; }
+
+  span.pl-c   // comments
+  { color: var(--gray); font-style: italic; }
+
+  span.pl-s,  // strings
+  span.pl-pds // string delimiters
+  { color: var(--darkgray); }
+
+  span.pl-c1, // constants / numbers
+  span.pl-en  // entity names
+  { color: var(--dark); }
+
+  span.pl-v,  // variables
+  span.pl-smi // symbol
+  { color: var(--dark); }
+}
+
+// Shiki / rehype-highlight token fallback
+code {
+  .token.keyword,
+  .token.tag,
+  .token.selector,
+  .token.builtin    { color: var(--dark); font-weight: 600; }
+
+  .token.comment,
+  .token.prolog     { color: var(--gray); font-style: italic; }
+
+  .token.string,
+  .token.attr-value { color: var(--darkgray); }
+
+  .token.number,
+  .token.boolean    { color: var(--dark); }
+
+  .token.operator,
+  .token.punctuation { color: var(--darkgray); }
+
+  .token.function,
+  .token.class-name  { color: var(--dark); }
+}
+
+// ============================================================
+//   14. SCROLLBARS
+// ============================================================
+
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--lightgray);
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 0;
+
+  &:hover { background: var(--darkgray); background-clip: padding-box; }
+}
+
+// ============================================================
+//   15. IMAGES — squared
+// ============================================================
+
+img { border-radius: 0; }
+
+// ============================================================
+//   16. SELECTION
+// ============================================================
+
+::selection {
+  background: rgba(35, 33, 28, 0.12);
+}
+
+:root[saved-theme="dark"] ::selection {
+  background: rgba(255, 253, 247, 0.13);
+}
+
