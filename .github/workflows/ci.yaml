@@ -1,0 +1,63 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  THEME_NAME: aura # used only if "Fetch Quartz theme" is on
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      # - name: Fetch Quartz Theme
+      #   run: curl -s -S https://raw.githubusercontent.com/saberzero1/quartz-themes/master/action.sh | bash -s -- $THEME_NAME
+      #   working-directory: ./source/quartz
+
+      - name: Build Quartz
+        run: |
+          npm install
+          chmod +x ./quartz/bootstrap-cli.mjs
+          npx quartz build --directory ../public-mind --bundleInfo
+        working-directory: ./source/quartz
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./source/quartz/public
+          retention-days: 1
+
+  deploy:
+    needs: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
