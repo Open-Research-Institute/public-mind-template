@@ -2,7 +2,7 @@
 
 This is a template / standard ontology for broadcasting "your mind" to the ORI network. This particular repo implements the protocol in Obsidian -> GitHub Pages. Any system that follows this structure and exports the data in a standard format (like RSS) can be compatible with the ORI network.
 
-See it live here: TODO
+See it live here: https://openresearchinstitute.org/public-mind-template/
 
 -----
 
