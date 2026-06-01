@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "defenderofbasic.github.io/DefenderOfBasic",
+    baseUrl: "https://openresearchinstitute.org/public-mind-template",
     // baseUrl: "localhost:8080",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",

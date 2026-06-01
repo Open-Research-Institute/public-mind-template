@@ -8,9 +8,9 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/DefenderOfBasic/DefenderOfBasic/",
+      GitHub: "https://github.com/Open-Research-Institute/public-mind-template",
       "ORI": "https://openresearchinstitute.org/",
-      RSS: "https://defenderofbasic.github.io/DefenderOfBasic/index.xml"
+      RSS: "https://github.com/Open-Research-Institute/public-mind-template/index.xml"
     },
   }),
 }
