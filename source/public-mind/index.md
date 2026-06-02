@@ -6,3 +6,5 @@ This is a template / standard ontology for broadcasting "your mind" to the ORI n
 - `📞 External Minds/` is all the minds that you are in contact with or who are influencing you
 	- `plurs/` is "plural intelligences", communities and subcultures
 	- `sings/` is "singular intelligence", individual humans and a feed of your notes/interactions with them
+- All other are top level items are your **CURRENT OPEN LOOPS**. If you have 3 main projects in your life right now, you have a file per loop, or a folder per loop. 
+	- Some of these may be containers for the project, or merely indices that link to where you work on the thing. 
